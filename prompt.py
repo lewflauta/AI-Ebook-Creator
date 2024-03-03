@@ -1,3 +1,31 @@
+import pathlib
+import textwrap
+
+import google.generativeai as genai
+
+from IPython.display import display
+from IPython.display import Markdown
+APIKEY = 0
+genai.configure(api_key=APIKEY)
+model = genai.GenerativeModel('gemini-pro')
+
+def to_markdown(text):
+  text = text.replace('•', '  *')
+  return Markdown(textwrap.indent(text, '> ', predicate=lambda _: True))
+
+%%time
+response = model.generate_content("What is the meaning of life?")
+
+to_markdown(response.text)
+
+
+
+
+
+
+
+
+
 def process_prompts(prompt, max_iterations=5):
   """
   Simulates iteratively processing prompts (replace with actual interaction with Gemini).
