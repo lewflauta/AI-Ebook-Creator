@@ -88,26 +88,3 @@ for prompt in prompts:
 response.candidates
 
 
-# Commented out IPython magic to ensure Python compatibility.
-# %%time
-# response = model.generate_content("What is the meaning of life?", stream=True)
-
-for chunk in response:
-  print(chunk.text)
-  print("_"*80)
-
-topic = "What is the meaning of life"
-response = model.generate_content(f"test {topic}", stream=True)
-
-
-response.prompt_feedback
-
-
-
-try:
-  response.text
-except Exception as e:
-  print(f'{type(e).__name__}: {e}')
-
-
-
